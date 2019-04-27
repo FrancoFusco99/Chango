@@ -25,6 +25,7 @@ int calcular_cant_productos(ifstream &archivo);
 Gondola crear_gondola(int cant_productos);
 //Pre:Debe estar creada una gondola.
 //Pos:Se ca a devolver el producto que se queria buscar.
+void cargar_gondola(ifstream &archivo, Gondola gondola);
 Producto tipo_busqueda(Gondola gondola);
 //Pre:Se debe encontrar el producto al cual se desea modificar su precio.
 //Pos:Se va a mostrar por pantalla el producto con el precio modificado.
