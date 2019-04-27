@@ -1,13 +1,14 @@
 #include "Gondola.h"
 
-Gondola::Gondola(){
-	cant_productos = 0;
-	productos = NULL;
-}
 
 Gondola::Gondola(int nueva_cant_productos){
 	cant_productos = nueva_cant_productos;
 	productos = new Producto[cant_productos];
+	producto_seleccionado = 0;
+}
+
+void Gondola::asignar_seleccion(int seleccion){
+    producto_seleccionado = seleccion;
 }
 
 void Gondola::asignar_cant_productos(int cantidad){
@@ -15,7 +16,8 @@ void Gondola::asignar_cant_productos(int cantidad){
 }
 
 void Gondola::asignar_productos(Producto* nuevos_productos){
-	productos = nuevos_productos;
+	productos[producto_seleccionado] = *nuevos_productos;
+	producto_seleccionado ++;
 }
 
 int Gondola::obtener_cant_productos(){
@@ -26,6 +28,10 @@ Producto* Gondola::obtener_productos(){
 	return productos;
 }
 
+Producto Gondola::obtener_producto(){
+    return productos[producto_seleccionado];
+}
+
 Producto Gondola::buscar_nombre(string nombre){
 	int pos_producto;
 	bool esta;
@@ -34,7 +40,7 @@ Producto Gondola::buscar_nombre(string nombre){
 		if(productos[i].obtener_nombre() == nombre){
 			pos_producto = i;
 			esta = true;
-		} 
+		}
 	}
 	if(esta){
 		cout<<"el producto esta disponible en la gondola"<<endl;
@@ -59,7 +65,7 @@ Producto Gondola::buscar_codigo(int codigo){
 		if(productos[i].obtener_codigo() == codigo){
 			pos_producto = i;
 			esta = true;
-		} 
+		}
 	}
 	if(esta){
 		cout<<"el producto esta disponible en la gondola"<<endl;
@@ -78,7 +84,7 @@ Producto Gondola::buscar_codigo(int codigo){
 }
 
 void Gondola::quitar_producto(Producto producto){
-	string nombre_eliminado = "-----"; 
+	string nombre_eliminado = "-----";
 	int codigo_eliminado = 0;
 	int precio_eliminado = 0;
 	bool oferta_eliminada = 0;
@@ -89,4 +95,8 @@ void Gondola::quitar_producto(Producto producto){
 	producto.asignar_oferta(oferta_eliminada);
 
 
+}
+
+Gondola::~Gondola(){
+	delete [] productos;
 }
