@@ -43,6 +43,7 @@ int Chango::monto_a_pagar(){
 	for (int i = 0; i < cant_productos; ++i){
 		total += productos[i].calcular_precio_final();
 	}
+	cout<<"El monto a pagar es :"<< total<< " $"<<endl;
 	return total;
 }
 
@@ -53,6 +54,7 @@ int Chango::ahorro_total(){
 			ahorro+= productos[i].obtener_precio() - productos[i].calcular_precio_final();
 		}
 	}
+	cout<<"Usted ahorro :"<< ahorro << " $"<<endl;
 	return ahorro;
 }
 

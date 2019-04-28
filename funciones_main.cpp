@@ -2,10 +2,18 @@
 
 
 
-int main(int argc, char *argv[]){
+int main(){
 
 
-    ifstream archivo = abrir_archivo("productos.txt");
+    ifstream archivo ;
+
+
+    archivo.open("productos.txt",ios::in);
+
+    if(archivo.fail()){
+        cout<< "No se pudo abrir el archivo"<< endl;
+    }
+
     int cant_productos = calcular_cant_productos(archivo);
     Gondola gondola = crear_gondola (cant_productos);
     cargar_gondola(archivo,gondola);
@@ -98,8 +106,8 @@ int main(int argc, char *argv[]){
                     cin>>agregar_prod;
                 }
 
-                cout<<"El monto a pagar es :"<< chango.monto_a_pagar() << " $"<<endl;
-                cout<<"Usted ahorro :"<< chango.ahorro_total() << " $"<<endl;
+                chango.monto_a_pagar();
+                chango.ahorro_total();
 
                 //~chango; // LLAMAR AL DESTRUCTOR DEL CHANGO,SE LLAMA SOLO?//
             }

@@ -1,18 +1,19 @@
 #include "funciones.h"
 
 
-ifstream abrir_archivo(string nom_archivo){
+//ifstream abrir_archivo(string nom_archivo){
 
-    ifstream entrada;
+//    ifstream entrada;
 
-    entrada.open("nom_archivo");
+//    entrada.open(nom_archivo);
 
-    if(entrada.fail()){
-        cout<< "No se pudo abrir el archivo"<< endl;
-    }
+//    if(entrada.fail()){
+//        cout<< "No se pudo abrir el archivo"<< endl;
+        // ACA NO HABRIA QUE AGREGAR UN REUTRN? OSEA QUE DEVUELVA ALGO TIPO NULL O ALGO ASI?//
+//    }
 
-    return entrada;
-}
+//    return entrada;
+//}
 
 
 int calcular_cant_productos(ifstream &archivo){
@@ -76,7 +77,7 @@ Producto tipo_busqueda(Gondola gondola){
 
         cout<<"ingrese el nombre del producto que desea buscar"<<endl;
         cin>>producto_a_buscar;
-        producto_a_obtener = gondola.buscar_nombre(producto_a_buscar);
+        producto_a_obtener = (gondola.buscar_nombre(producto_a_buscar));
 
     }else{
 
@@ -84,7 +85,7 @@ Producto tipo_busqueda(Gondola gondola){
 
         cout<<"ingrese el codigo del producto del producto que desea buscar "<<endl;
         cin>>codigo_a_buscar;
-        producto_a_obtener = gondola.buscar_codigo(codigo_a_buscar);
+        producto_a_obtener = (gondola.buscar_codigo(codigo_a_buscar));
 
     }
 
